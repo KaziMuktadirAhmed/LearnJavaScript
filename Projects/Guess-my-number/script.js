@@ -11,13 +11,10 @@ document.querySelector(".highscore").textContent = highscore;
 document.querySelector(".check").addEventListener("click", () => {
   const value = Number(document.querySelector(".guess").value);
 
-  // invalid input
   if (!value) {
-    document.querySelector(".message").textContent = "⛔ Not a number";
-  }
-  // correct guess
-  else if (value == secrate) {
-    document.querySelector(".message").textContent = "🎉 Correct Guess !!";
+    showMessage("⛔ Invalid number");
+  } else if (value === secrate) {
+    showMessage("🎉 Correct Guess !!");
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").textContent = secrate;
     document.querySelector(".number").style.width = "30rem";
@@ -26,35 +23,23 @@ document.querySelector(".check").addEventListener("click", () => {
       highscore = score;
       document.querySelector(".highscore").textContent = highscore;
     }
-  }
-  // when guess is too high
-  else if (value > secrate) {
+  } else if (value !== secrate) {
     if (score > 0) {
-      document.querySelector(".message").textContent = "📈 Too high";
+      showMessage(value > secrate ? "📈 Too high" : "📉 Too low");
       score--;
     } else {
-      document.querySelector(".message").textContent = "💥 You lost the game";
-    }
-  }
-  // when guess is too low
-  else if (value < secrate) {
-    if (score > 0) {
-      document.querySelector(".message").textContent = "📉 Too low";
-      score--;
-    } else {
-      document.querySelector(".message").textContent = "💥 You lost the game";
+      showMessage("💥 You lost the game");
     }
   } else {
-    document.querySelector(".message").textContent = "Start guessing ...";
+    showMessage("Start guessing ...");
   }
   document.querySelector(".score").textContent = score;
-  console.log(`current value ${value}`);
 });
 
 document.querySelector(".again").addEventListener("click", () => {
   score = 10;
   secrate = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector(".message").textContent = "Start guessing ...";
+  showMessage("Start guessing ...");
   document.querySelector(".guess").value = 0;
   document.querySelector(".score").textContent = score;
   document.querySelector(".number").textContent = "?";
@@ -62,3 +47,7 @@ document.querySelector(".again").addEventListener("click", () => {
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
 });
+
+function showMessage(message) {
+  document.querySelector(".message").textContent = message;
+}
