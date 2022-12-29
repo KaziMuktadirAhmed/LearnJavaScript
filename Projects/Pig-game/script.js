@@ -4,6 +4,8 @@ const scores = [0, 0];
 let current_player = 0;
 let current_score = 0;
 
+const player_0_node = document.querySelector('.player--0');
+const player_1_node = document.querySelector('.player--1');
 const player_0_score_node = document.getElementById('score--0');
 const player_1_score_node = document.getElementById('score--1');
 const dice_node = document.querySelector('.dice');
@@ -29,12 +31,14 @@ function evaluateDiceRoll(roll) {
       current_score;
   } else {
     current_score = 0;
-    document.getElementById(`current--${current_player}`).textContent =
-      current_score;
     switchPlayer();
   }
 }
 
 function switchPlayer() {
+  document.getElementById(`current--${current_player}`).textContent =
+    current_score;
   current_player = (current_player + 1) % 2;
+  player_0_node.classList.toggle('player--active');
+  player_1_node.classList.toggle('player--active');
 }
