@@ -6,13 +6,17 @@ const btnCloseModal = document.querySelector(".close-modal");
 const btnsShowModal = document.querySelectorAll(".show-modal");
 
 for (let i = 0; i < btnsShowModal.length; i++) {
-  btnsShowModal[i].addEventListener("click", () => {
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hideen");
-  });
+  btnsShowModal[i].addEventListener("click", openModal);
 }
 
-btnCloseModal.addEventListener("click", () => {
+btnCloseModal.addEventListener("click", closeModal);
+
+function closeModal() {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
-});
+}
+
+function openModal(i) {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hideen");
+}
