@@ -1,10 +1,12 @@
 "use strict";
 
 let secrate = Math.trunc(Math.random() * 20) + 1;
-let score = 10;
+let score = 10,
+  highscore = 0;
 
 document.querySelector(".guess").value = 0;
 document.querySelector(".score").textContent = score;
+document.querySelector(".highscore").textContent = highscore;
 
 document.querySelector(".check").addEventListener("click", () => {
   const value = Number(document.querySelector(".guess").value);
@@ -19,6 +21,11 @@ document.querySelector(".check").addEventListener("click", () => {
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").textContent = secrate;
     document.querySelector(".number").style.width = "30rem";
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(".highscore").textContent = highscore;
+    }
   }
   // when guess is too high
   else if (value > secrate) {
