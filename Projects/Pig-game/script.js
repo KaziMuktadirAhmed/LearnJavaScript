@@ -24,6 +24,12 @@ btnRoll.addEventListener('click', event => {
   evaluateDiceRoll(randomRoll);
 });
 
+btnHold.addEventListener('click', event => {
+  scores[current_player] += current_score;
+  document.querySelector(`.scoer--${scores[current_player]}`).textContent =
+    scores[current_player];
+});
+
 function evaluateDiceRoll(roll) {
   if (roll !== 1) {
     current_score += roll;
