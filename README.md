@@ -1,1 +1,3 @@
-# Practice JavaScript 
+# Practice JavaScript
+
+## Fundamentals done
