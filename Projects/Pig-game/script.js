@@ -40,6 +40,7 @@ btnHold.addEventListener('click', event => {
       document
         .querySelector(`.player--${current_player}`)
         .classList.remove(`player--active`);
+      dice_node.classList.add('hidden');
       game = false;
     } else {
       switchPlayer();
@@ -53,12 +54,12 @@ function evaluateDiceRoll(roll) {
     document.getElementById(`current--${current_player}`).textContent =
       current_score;
   } else {
-    current_score = 0;
     switchPlayer();
   }
 }
 
 function switchPlayer() {
+  current_score = 0;
   document.getElementById(`current--${current_player}`).textContent =
     current_score;
   current_player = (current_player + 1) % 2;
