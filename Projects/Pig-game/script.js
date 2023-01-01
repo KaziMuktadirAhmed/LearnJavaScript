@@ -26,7 +26,7 @@ btnRoll.addEventListener('click', event => {
 
 btnHold.addEventListener('click', event => {
   scores[current_player] += current_score;
-  document.querySelector(`.scoer--${scores[current_player]}`).textContent =
+  document.querySelector(`#score--${current_player}`).textContent =
     scores[current_player];
 });
 
