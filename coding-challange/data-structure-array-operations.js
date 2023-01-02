@@ -27,3 +27,19 @@ const restaurant = {
     },
   },
 };
+
+// function to Take multiplce parameters
+
+const add = function (...nums) {
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) sum += nums[i];
+  return sum;
+};
+
+let arr = [4, 5, 4, 23, 56];
+
+console.log(add(1, 2));
+console.log(add(1, 2, 3));
+console.log(add(1, 2, 3, 4));
+console.log(add(1, 2, 3, 4, 5, 6));
+console.log(add(...arr));
