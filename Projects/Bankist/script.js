@@ -63,7 +63,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-// LECTURES
 
 const currencies = new Map([
   ['USD', 'United States dollar'],
@@ -73,4 +72,22 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+const displayMovement = function (movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach((mov, i) => {
+    const movementType = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const htmlTemplate = `<div class="movements__row">
+    <div class="movements__type movements__type--${movementType}">${
+      i + 1
+    } ${movementType}</div>
+    <div class="movements__date">3 days ago</div>
+    <div class="movements__value">${mov}</div>
+  </div>`;
+
+    containerMovements.insertAdjacentHTML('afterbegin', htmlTemplate);
+  });
+};
+
+displayMovement(account1.movements);
