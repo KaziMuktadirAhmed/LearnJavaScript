@@ -4,10 +4,10 @@
 
 ### How to run
 
-use live-server to run the index.html file in the browser.
-Intall command live-server in pc using npm
-`npm install -g live-server`
-To start live server navigate to the project directory in terminal. example: `cd <dir>`
-Then start the live server with : `live-server`
+use live-server to run the index.html file in the browser. <br>
+Intall command live-server in pc using npm <br>
+`npm install -g live-server` <br>
+To start live server navigate to the project directory in terminal. example: `cd <dir>` <br>
+Then start the live server with : `live-server` <br>
 
 ## Fundamentals done
