@@ -101,6 +101,12 @@ const generateUserNames = accounts => {
       .join('');
   });
 };
-
 generateUserNames(accounts);
-console.log(accounts);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((accum, cur) => accum + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+// console.log(balance);
