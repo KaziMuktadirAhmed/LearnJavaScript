@@ -142,7 +142,7 @@ btnLogin.addEventListener('click', function (event) {
     acc => acc.userName === inputLoginUsername.value
   );
 
-  if (currentAccount.pin === Number(inputLoginPin.value)) {
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
@@ -153,16 +153,6 @@ btnLogin.addEventListener('click', function (event) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
   }
-});
-
-btnTransfer.addEventListener('click', function (event) {
-  event.preventDefault();
-
-  const transfeAmount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(
-    acc => acc.userName === inputTransferTo.value
-  );
-  transferMoney(transfeAmount, receiverAcc);
 });
 
 function transferMoney(amount, receiverAcc) {
@@ -179,3 +169,28 @@ function transferMoney(amount, receiverAcc) {
     inputTransferAmount.value = inputTransferTo.value = '';
   }
 }
+
+btnTransfer.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const transfeAmount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.userName === inputTransferTo.value
+  );
+  transferMoney(transfeAmount, receiverAcc);
+});
+
+btnClose.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.userName &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.userName === currentAccount.userName
+    );
+    // console.log(index);
+    // accounts.splice(index, 1);
+  }
+});
