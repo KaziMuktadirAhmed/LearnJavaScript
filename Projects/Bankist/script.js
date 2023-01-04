@@ -192,7 +192,6 @@ btnClose.addEventListener('click', function (event) {
     const index = accounts.findIndex(
       acc => acc.userName === currentAccount.userName
     );
-    // console.log(index);
     accounts.splice(index, 1);
     containerApp.style.opacity = 0;
   }
