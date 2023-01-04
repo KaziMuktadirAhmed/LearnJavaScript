@@ -91,3 +91,16 @@ const displayMovement = function (movements) {
 };
 
 displayMovement(account1.movements);
+
+const generateUserNames = accounts => {
+  accounts.forEach(account => {
+    account.userName = account.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+generateUserNames(accounts);
+console.log(accounts);
