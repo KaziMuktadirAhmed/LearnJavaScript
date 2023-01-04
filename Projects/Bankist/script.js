@@ -142,6 +142,8 @@ btnLogin.addEventListener('click', function (event) {
     acc => acc.userName === inputLoginUsername.value
   );
 
+  console.log(currentAccount);
+
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -191,6 +193,9 @@ btnClose.addEventListener('click', function (event) {
       acc => acc.userName === currentAccount.userName
     );
     // console.log(index);
-    // accounts.splice(index, 1);
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
   }
+
+  inputCloseUsername.value = inputClosePin.value = '';
 });
