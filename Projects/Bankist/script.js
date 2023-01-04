@@ -72,10 +72,13 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovement = function (movements) {
+const displayMovement = function (movements, sort = false) {
   containerMovements.innerHTML = '';
+  const displayMovementArr = sort
+    ? movements.slice().sort((a, b) => a - b)
+    : movements;
 
-  movements.forEach((mov, i) => {
+  displayMovementArr.forEach((mov, i) => {
     const movementType = mov > 0 ? 'deposit' : 'withdrawal';
 
     const htmlTemplate = `<div class="movements__row">
@@ -210,4 +213,12 @@ btnClose.addEventListener('click', function (event) {
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let movementState = false;
+
+btnSort.addEventListener('click', function (event) {
+  event.preventDefault();
+  movementState = !movementState;
+  displayMovement(currentAccount.movements, movementState);
 });
