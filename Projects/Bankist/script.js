@@ -233,7 +233,7 @@ function updateDate() {
 }
 
 const startLogoutTimer = function () {
-  let time = 10;
+  let time = 120;
   const tick = () => {
     const min = String(Math.trunc(time / 60)).padStart(2, 0),
       sec = String(time % 60).padStart(2, 0);
