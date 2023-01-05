@@ -208,7 +208,7 @@ const calcDisplaySummary = function (account) {
   )}`;
 };
 
-let currentAccount;
+let currentAccount, timer;
 
 function updateUI(account) {
   displayMovement(account);
@@ -232,6 +232,24 @@ function updateDate() {
   labelDate.textContent = date;
 }
 
+const startLogoutTimer = function () {
+  let time = 10;
+  const tick = () => {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0),
+      sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started`;
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 btnLogin.addEventListener('click', function (event) {
   event.preventDefault();
 
@@ -248,11 +266,17 @@ btnLogin.addEventListener('click', function (event) {
 
     containerApp.style.opacity = 100;
     updateUI(currentAccount);
+    resetTimer();
 
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
   }
 });
+
+function resetTimer() {
+  if (timer) clearInterval(timer);
+  timer = startLogoutTimer();
+}
 
 function transferMoney(amount, receiverAcc) {
   if (
@@ -274,6 +298,7 @@ function transferMoney(amount, receiverAcc) {
 
 btnTransfer.addEventListener('click', function (event) {
   event.preventDefault();
+  resetTimer();
 
   const transfeAmount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
@@ -284,6 +309,7 @@ btnTransfer.addEventListener('click', function (event) {
 
 btnLoan.addEventListener('click', function (event) {
   event.preventDefault();
+  resetTimer();
 
   const amount = Math.floor(inputLoanAmount.value);
 
@@ -298,6 +324,7 @@ btnLoan.addEventListener('click', function (event) {
 
 btnClose.addEventListener('click', function (event) {
   event.preventDefault();
+  resetTimer();
 
   if (
     inputCloseUsername.value === currentAccount.userName &&
@@ -317,6 +344,7 @@ let movementState = false;
 
 btnSort.addEventListener('click', function (event) {
   event.preventDefault();
+  resetTimer();
   movementState = !movementState;
   displayMovement(currentAccount, movementState);
 });
