@@ -20,7 +20,8 @@ const account1 = {
   ],
   interestRate: 1.2,
   pin: 1111,
-  locale: 'en-US', // de-DE
+  locale: 'pt-PT',
+  currency: 'EUR', // de-DE
 };
 
 const account2 = {
@@ -38,7 +39,8 @@ const account2 = {
   ],
   interestRate: 1.5,
   pin: 2222,
-  locale: 'en-GB', // de-DE
+  locale: 'en-US',
+  currency: 'USD', // de-DE
 };
 
 const account3 = {
@@ -56,7 +58,8 @@ const account3 = {
   ],
   interestRate: 0.7,
   pin: 3333,
-  locale: 'bn-BD', // de-DE
+  locale: 'bn-BD',
+  currency: 'BDT', // de-DE
 };
 
 const account4 = {
@@ -71,7 +74,8 @@ const account4 = {
   ],
   interestRate: 1,
   pin: 4444,
-  locale: 'pt-PT', // de-DE
+  locale: 'pt-PT',
+  currency: 'USD', // de-DE
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -126,7 +130,7 @@ const formateMovementDate = function (date, locale) {
 };
 
 const displayMovement = function (account, sort = false) {
-  const { movements, movementsDates, locale } = account;
+  const { movements, movementsDates, locale, currency } = account;
 
   containerMovements.innerHTML = '';
   const displayMovementArr = sort
@@ -138,13 +142,14 @@ const displayMovement = function (account, sort = false) {
 
     const date = new Date(movementsDates[i]);
     const movDate = formateMovementDate(date, locale);
+    const formattedMov = formatCurrency(locale, currency, mov);
 
     const htmlTemplate = `<div class="movements__row">
     <div class="movements__type movements__type--${movementType}">${
       i + 1
     } ${movementType}</div>
     <div class="movements__date">${movDate}</div>
-    <div class="movements__value">${mov.toFixed(2)}</div>
+    <div class="movements__value">${formattedMov}</div>
   </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', htmlTemplate);
@@ -162,30 +167,45 @@ const generateUserNames = accounts => {
 };
 generateUserNames(accounts);
 
+function formatCurrency(locale, currency, value) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+}
+
 const calcDisplayBalance = function (account) {
-  const { movements } = account;
+  const { movements, locale, currency } = account;
   account.balance = movements.reduce((accum, cur) => accum + cur, 0);
-  labelBalance.textContent = `${account.balance.toFixed(2)}€`;
+  labelBalance.textContent = `${formatCurrency(
+    locale,
+    currency,
+    account.balance
+  )}`;
 };
 
 const calcDisplaySummary = function (account) {
-  const { movements, interestRate } = account;
+  const { movements, interestRate, locale, currency } = account;
   const income = movements
     .filter(mov => mov >= 0)
     .reduce((accum, cur) => accum + cur, 0);
-  labelSumIn.textContent = `${income.toFixed(2)}€`;
+  labelSumIn.textContent = `${formatCurrency(locale, currency, income)}`;
 
   const outging = movements
     .filter(mov => mov < 0)
     .reduce((accum, cur) => accum + cur, 0);
-  labelSumOut.textContent = `${Math.abs(outging.toFixed(2))}€`;
+  labelSumOut.textContent = `${formatCurrency(locale, currency, outging)}`;
 
   const interest = movements
     .filter(mov => mov > 0)
     .map(dep => (dep * interestRate) / 100)
     .filter(inter => inter >= 1)
     .reduce((accum, cur) => accum + cur, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = `${formatCurrency(
+    locale,
+    currency,
+    interest
+  )}`;
 };
 
 let currentAccount;
