@@ -18,7 +18,7 @@ const account1 = {
     '2020-07-28T23:36:17.929Z',
     '2020-08-01T10:51:36.790Z',
   ],
-  interestRate: 1.2, // %
+  interestRate: 1.2,
   pin: 1111,
 };
 
@@ -48,6 +48,7 @@ const account3 = {
     '2019-12-25T06:04:23.907Z',
     '2020-02-05T16:33:06.386Z',
     '2020-04-10T14:43:26.374Z',
+    '2020-05-10T14:43:26.374Z',
     '2020-06-25T18:49:59.371Z',
     '2020-07-26T12:01:20.894Z',
   ],
@@ -108,7 +109,9 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovement = function (movements, sort = false) {
+const displayMovement = function (account, sort = false) {
+  const { movements, movementsDates } = account;
+
   containerMovements.innerHTML = '';
   const displayMovementArr = sort
     ? movements.slice().sort((a, b) => a - b)
@@ -169,7 +172,7 @@ const calcDisplaySummary = function (account) {
 let currentAccount;
 
 function updateUI(account) {
-  displayMovement(account.movements);
+  displayMovement(account);
   calcDisplayBalance(account);
   calcDisplaySummary(account);
   updateDate();
@@ -267,5 +270,5 @@ let movementState = false;
 btnSort.addEventListener('click', function (event) {
   event.preventDefault();
   movementState = !movementState;
-  displayMovement(currentAccount.movements, movementState);
+  displayMovement(currentAccount, movementState);
 });
