@@ -120,11 +120,17 @@ const displayMovement = function (account, sort = false) {
   displayMovementArr.forEach((mov, i) => {
     const movementType = mov > 0 ? 'deposit' : 'withdrawal';
 
+    const date = new Date(movementsDates[i]);
+    const year = `${date.getFullYear()}`,
+      month = `${date.getMonth() + 1}`.padStart(2, 0),
+      day = `${date.getDay() + 1}`.padStart(2, 0);
+    const movDate = `${day}/${month}/${year}`;
+
     const htmlTemplate = `<div class="movements__row">
     <div class="movements__type movements__type--${movementType}">${
       i + 1
     } ${movementType}</div>
-    <div class="movements__date">3 days ago</div>
+    <div class="movements__date">${movDate}</div>
     <div class="movements__value">${mov.toFixed(2)}</div>
   </div>`;
 
@@ -180,11 +186,11 @@ function updateUI(account) {
 
 function updateDate() {
   const now = new Date();
-  const year = now.getFullYear(),
-    month = now.getMonth() + 1,
-    day = now.getDay(),
-    hour = now.getHours(),
-    minute = now.getMinutes();
+  const year = `${now.getFullYear()}`,
+    month = `${now.getMonth() + 1}`.padStart(2, 0),
+    day = `${now.getDay() + 1}`.padStart(2, 0),
+    hour = `${now.getHours()}`.padStart(2, 0),
+    minute = `${now.getMinutes()}`.padStart(2, 0);
   labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minute}`;
 }
 
@@ -220,6 +226,9 @@ function transferMoney(amount, receiverAcc) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
+
     updateUI(currentAccount);
     inputTransferAmount.value = inputTransferTo.value = '';
   }
@@ -242,6 +251,7 @@ btnLoan.addEventListener('click', function (event) {
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     currentAccount.movements.push(amount);
+    currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
   }
 
