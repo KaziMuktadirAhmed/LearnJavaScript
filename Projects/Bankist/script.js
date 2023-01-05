@@ -20,6 +20,7 @@ const account1 = {
   ],
   interestRate: 1.2,
   pin: 1111,
+  locale: 'en-US', // de-DE
 };
 
 const account2 = {
@@ -37,6 +38,7 @@ const account2 = {
   ],
   interestRate: 1.5,
   pin: 2222,
+  locale: 'en-GB', // de-DE
 };
 
 const account3 = {
@@ -54,6 +56,7 @@ const account3 = {
   ],
   interestRate: 0.7,
   pin: 3333,
+  locale: 'bn-BD', // de-DE
 };
 
 const account4 = {
@@ -68,6 +71,7 @@ const account4 = {
   ],
   interestRate: 1,
   pin: 4444,
+  locale: 'pt-PT', // de-DE
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -200,12 +204,17 @@ function updateUI(account) {
 
 function updateDate() {
   const now = new Date();
-  const year = `${now.getFullYear()}`,
-    month = `${now.getMonth() + 1}`.padStart(2, 0),
-    day = `${now.getDay() + 1}`.padStart(2, 0),
-    hour = `${now.getHours()}`.padStart(2, 0),
-    minute = `${now.getMinutes()}`.padStart(2, 0);
-  labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minute}`;
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  };
+  const date = new Intl.DateTimeFormat(currentAccount.locale, options).format(
+    now
+  );
+  labelDate.textContent = date;
 }
 
 btnLogin.addEventListener('click', function (event) {
