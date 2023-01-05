@@ -113,7 +113,7 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const formateMovementDate = function (date) {
+const formateMovementDate = function (date, locale) {
   const calcDaysPassed = (startDate, endDate) =>
     Math.round(Math.abs(endDate - startDate) / (1000 * 60 * 60 * 24));
 
@@ -122,16 +122,11 @@ const formateMovementDate = function (date) {
   if (daysPassed === 0) return `Today`;
   else if (daysPassed === 1) return `Yesterday`;
   else if (daysPassed <= 7) return `${daysPassed} days ago`;
-  else {
-    const year = `${date.getFullYear()}`,
-      month = `${date.getMonth() + 1}`.padStart(2, 0),
-      day = `${date.getDay() + 1}`.padStart(2, 0);
-    return `${day}/${month}/${year}`;
-  }
+  else return Intl.DateTimeFormat(locale).format(date);
 };
 
 const displayMovement = function (account, sort = false) {
-  const { movements, movementsDates } = account;
+  const { movements, movementsDates, locale } = account;
 
   containerMovements.innerHTML = '';
   const displayMovementArr = sort
@@ -142,7 +137,7 @@ const displayMovement = function (account, sort = false) {
     const movementType = mov > 0 ? 'deposit' : 'withdrawal';
 
     const date = new Date(movementsDates[i]);
-    const movDate = formateMovementDate(date);
+    const movDate = formateMovementDate(date, locale);
 
     const htmlTemplate = `<div class="movements__row">
     <div class="movements__type movements__type--${movementType}">${
