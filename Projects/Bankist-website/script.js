@@ -72,3 +72,27 @@ tabsContainer.addEventListener('click', function (event) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// Menu fade animation
+const nav = document.querySelector('.nav');
+
+nav.addEventListener('mouseover', function (event) {
+  changeFocusOnEvent(event, 0.5);
+});
+
+nav.addEventListener('mouseout', function (event) {
+  changeFocusOnEvent(event, 1);
+});
+
+function changeFocusOnEvent(event, opacity) {
+  if (event.target.classList.contains('nav__link')) {
+    const link = event.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(elem => {
+      if (elem !== link) elem.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
+  }
+}
