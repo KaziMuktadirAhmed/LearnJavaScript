@@ -5,7 +5,11 @@
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
+
 const section1 = document.querySelector('#section--1');
+const section2 = document.querySelector('#section--2');
+const section3 = document.querySelector('#section--3');
+
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
@@ -34,30 +38,16 @@ document.addEventListener('keydown', function (e) {
 
 btnScrollTo.addEventListener('click', function (event) {
   section1.scrollIntoView({ behavior: 'smooth' });
+  return true;
 });
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-console.log(randomColor());
-
-document
-  .querySelector('.nav__link')
-  .addEventListener('click', function (event) {
-    event.preventDefault();
-    this.style.backgroundColor = randomColor();
-  });
-
+// Page Navigation using event deligation
 document
   .querySelector('.nav__links')
   .addEventListener('click', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = randomColor();
+    if (event.target.classList.contains('nav__link')) {
+      const id = event.target.getAttribute('href');
+      document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    }
   });
-
-document.querySelector('.nav').addEventListener('click', function (event) {
-  event.preventDefault();
-  this.style.backgroundColor = randomColor();
-});
