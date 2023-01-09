@@ -10,6 +10,6 @@ Intall command live-server in pc using npm <br>
 To start live server navigate to the project directory in terminal. example: `cd <dir>` <br>
 Then start the live server with : `live-server` <br>
 
-## Fundamentals done
+## Fundamentals ✅
 
-## Advanced DOM manipulation done
+## Advanced DOM manipulation ✅
