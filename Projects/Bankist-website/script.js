@@ -76,23 +76,18 @@ tabsContainer.addEventListener('click', function (event) {
 // Menu fade animation
 const nav = document.querySelector('.nav');
 
-nav.addEventListener('mouseover', function (event) {
-  changeFocusOnEvent(event, 0.5);
-});
-
-nav.addEventListener('mouseout', function (event) {
-  changeFocusOnEvent(event, 1);
-});
-
-function changeFocusOnEvent(event, opacity) {
+const changeFocusOnEvent = function (event) {
   if (event.target.classList.contains('nav__link')) {
     const link = event.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
     siblings.forEach(elem => {
-      if (elem !== link) elem.style.opacity = opacity;
+      if (elem !== link) elem.style.opacity = this;
     });
-    logo.style.opacity = opacity;
+    logo.style.opacity = this;
   }
-}
+};
+
+nav.addEventListener('mouseover', changeFocusOnEvent.bind(0.5));
+nav.addEventListener('mouseout', changeFocusOnEvent.bind(1));
