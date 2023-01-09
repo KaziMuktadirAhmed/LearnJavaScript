@@ -91,3 +91,12 @@ const changeFocusOnEvent = function (event) {
 
 nav.addEventListener('mouseover', changeFocusOnEvent.bind(0.5));
 nav.addEventListener('mouseout', changeFocusOnEvent.bind(1));
+
+// Sticky navigation
+const initialPos = section1.getBoundingClientRect();
+console.log(initialPos);
+
+window.addEventListener('scroll', function (event) {
+  if (this.window.scrollY > initialPos.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
