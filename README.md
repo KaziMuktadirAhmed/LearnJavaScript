@@ -11,3 +11,5 @@ To start live server navigate to the project directory in terminal. example: `cd
 Then start the live server with : `live-server` <br>
 
 ## Fundamentals done
+
+## Advanced DOM manipulation done
