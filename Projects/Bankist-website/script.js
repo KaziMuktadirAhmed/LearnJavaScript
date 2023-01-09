@@ -6,6 +6,7 @@
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 
+const header = document.querySelector('.header');
 const section1 = document.querySelector('#section--1');
 const section2 = document.querySelector('#section--2');
 const section3 = document.querySelector('#section--3');
@@ -92,11 +93,19 @@ const changeFocusOnEvent = function (event) {
 nav.addEventListener('mouseover', changeFocusOnEvent.bind(0.5));
 nav.addEventListener('mouseout', changeFocusOnEvent.bind(1));
 
-// Sticky navigation
-const initialPos = section1.getBoundingClientRect();
-console.log(initialPos);
+// Sticku navigation: Intersection observer API
+const navHeight = nav.getBoundingClientRect().height;
 
-window.addEventListener('scroll', function (event) {
-  if (this.window.scrollY > initialPos.top) nav.classList.add('sticky');
+const stickyNavCallback = function (entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
+};
+
+const observer = new IntersectionObserver(stickyNavCallback, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 });
+
+observer.observe(header);
