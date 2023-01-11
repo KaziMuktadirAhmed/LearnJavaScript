@@ -11,64 +11,84 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map, mapEvent;
+class App {
+  #map;
+  #mapEvent;
+  #mapZoomLevel = 13;
 
-// Using the geolocation API
-console.log('ok');
-navigator.geolocation.getCurrentPosition(
-  function (position) {
+  constructor() {
+    this._getPosition();
+
+    form.addEventListener('submit', this._newWorkout.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
+  }
+
+  _getPosition() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          alert('Could not get location');
+          return true;
+        }
+      );
+    }
+  }
+
+  _loadMap(position) {
     const { latitude, longitude } = position.coords;
     const coords = [latitude, longitude];
 
-    // Leaflet template code
-    map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
     L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-    }).addTo(map);
+    }).addTo(this.#map);
 
-    map.on('click', function (event) {
-      mapEvent = event;
-      form.classList.remove('hidden');
-      inputDistance.focus();
-    });
-
-    return true;
-  },
-  function () {
-    alert('Could not get location');
+    this.#map.on('click', this._showForm.bind(this));
 
     return true;
   }
-);
 
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
+  _showForm(event) {
+    this.#mapEvent = event;
+    form.classList.remove('hidden');
+    inputDistance.focus();
+  }
 
-  inputDistance.value =
-    inputCadence.value =
-    inputDuration.value =
-    inputElevation.value =
-      '';
+  _toggleElevationField() {
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+  }
 
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      })
-    )
-    .setPopupContent('workout')
-    .openPopup();
-});
+  _newWorkout(event) {
+    event.preventDefault();
 
-inputType.addEventListener('change', function () {
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-});
+    inputDistance.value =
+      inputCadence.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
+
+    const { lat, lng } = this.#mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      )
+      .setPopupContent('workout')
+      .openPopup();
+  }
+}
+
+const app = new App();
+
+// Using the geolocation API
+console.log('ok');
