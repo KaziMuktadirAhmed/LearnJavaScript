@@ -33,7 +33,7 @@ class Running extends Workout {
     this.pace = this.duration / this.distance;
   }
 
-  get pace() {
+  getPace() {
     return this.pace;
   }
 }
@@ -49,7 +49,7 @@ class Cycling extends Workout {
     this.speed = this.distance / (this.duration / 60);
   }
 
-  get speed() {
+  getSpeed() {
     return this.speed;
   }
 }
@@ -58,6 +58,7 @@ class App {
   #map;
   #mapEvent;
   #mapZoomLevel = 13;
+  #workouts = [];
 
   constructor() {
     this._getPosition();
@@ -106,15 +107,43 @@ class App {
   }
 
   _newWorkout(event) {
+    const validInputs = (...inputs) =>
+      inputs.every(input => Number.isFinite(input));
+    const allPositive = (...inputs) => inputs.every(input => input > 0);
+
     event.preventDefault();
 
-    inputDistance.value =
-      inputCadence.value =
-      inputDuration.value =
-      inputElevation.value =
-        '';
-
+    const type = inputType.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
     const { lat, lng } = this.#mapEvent.latlng;
+    let workout;
+
+    if (type === 'running') {
+      const cadence = +inputCadence.value;
+      if (
+        !validInputs(distance, duration, cadence) ||
+        !allPositive(distance, duration, cadence)
+      )
+        return alert('Inputs has to be positive number');
+
+      workout = new Running([lat, lng], distance, duration, cadence);
+    }
+
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+      if (
+        !validInputs(distance, duration, elevation) ||
+        !allPositive(distance, duration)
+      )
+        return alert('Inputs has to be positive number');
+
+      workout = new Cycling([lat, lng], distance, duration, elevation);
+    }
+
+    this.#workouts.push(workout);
+    console.log(workout);
+
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
@@ -128,6 +157,12 @@ class App {
       )
       .setPopupContent('workout')
       .openPopup();
+
+    inputDistance.value =
+      inputCadence.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
   }
 }
 
