@@ -128,17 +128,25 @@ class App {
     inputDistance.focus();
   }
 
+  _hideForm() {
+    inputDistance.value =
+      inputCadence.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
+    form.classList.add('hidden');
+  }
+
   _toggleElevationField() {
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   }
 
   _newWorkout(event) {
+    event.preventDefault();
     const validInputs = (...inputs) =>
       inputs.every(input => Number.isFinite(input));
     const allPositive = (...inputs) => inputs.every(input => input > 0);
-
-    event.preventDefault();
 
     const type = inputType.value;
     const distance = +inputDistance.value;
@@ -172,6 +180,8 @@ class App {
 
     this._renderWorkoutMarker(workout);
     this._renderWorkout(workout);
+
+    this._hideForm();
   }
 
   _renderWorkoutMarker(workout) {
@@ -188,12 +198,6 @@ class App {
       )
       .setPopupContent('workout')
       .openPopup();
-
-    inputDistance.value =
-      inputCadence.value =
-      inputDuration.value =
-      inputElevation.value =
-        '';
   }
 
   _renderWorkout(workout) {
@@ -223,7 +227,7 @@ class App {
           </div>
           <div class="workout__details">
             <span class="workout__icon">🦶🏼</span>
-            <span class="workout__value">${workout.cadence}</span>
+            <span class="workout__value">${workout.cadance}</span>
             <span class="workout__unit">spm</span>
           </div>
         </li>
