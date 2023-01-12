@@ -1,8 +1,5 @@
 'use strict';
 
-// prettier-ignore
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
@@ -12,7 +9,7 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 class Workout {
-  click = 0;
+  clicks = 0;
   date = new Date();
   id = (Date.now() + '').slice(-10);
 
@@ -63,7 +60,7 @@ class Running extends Workout {
   }
 
   click() {
-    this.click++;
+    this.clicks++;
   }
 }
 
@@ -94,6 +91,7 @@ class App {
 
   constructor() {
     this._getPosition();
+    this._getLocalStorage();
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
@@ -123,6 +121,7 @@ class App {
     }).addTo(this.#map);
 
     this.#map.on('click', this._showForm.bind(this));
+    this.#workouts.forEach(workout => this._renderWorkoutMarker(workout));
 
     return true;
   }
@@ -188,8 +187,8 @@ class App {
 
     this._renderWorkoutMarker(workout);
     this._renderWorkout(workout);
-
     this._hideForm();
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -273,6 +272,20 @@ class App {
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
       pan: { duration: 1 },
+    });
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+    if (!data) return;
+    this.#workouts = data;
+    this.#workouts.forEach(workout => {
+      this._renderWorkout(workout);
+      // this._renderWorkoutMarker(workout);
     });
   }
 }
