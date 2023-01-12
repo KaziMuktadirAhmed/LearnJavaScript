@@ -12,6 +12,7 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 class Workout {
+  click = 0;
   date = new Date();
   id = (Date.now() + '').slice(-10);
 
@@ -60,6 +61,10 @@ class Running extends Workout {
   getPace() {
     return this.pace;
   }
+
+  click() {
+    this.click++;
+  }
 }
 
 class Cycling extends Workout {
@@ -89,9 +94,9 @@ class App {
 
   constructor() {
     this._getPosition();
-
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -254,6 +259,21 @@ class App {
             `;
 
     form.insertAdjacentHTML('afterend', html);
+  }
+
+  _moveToPopup(event) {
+    const workoutElem = event.target.closest('.workout');
+
+    if (!workoutElem) return;
+
+    const workout = this.#workouts.find(
+      workout => workout.id === workoutElem.dataset.id
+    );
+
+    this.#map.setView(workout.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: { duration: 1 },
+    });
   }
 }
 
