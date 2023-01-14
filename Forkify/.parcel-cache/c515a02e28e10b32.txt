@@ -1,4 +1,4 @@
-4374
+4377
 111H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\runtime-js\lib\helpers\browser\wasm-loader.js133181745888155626 0
 77H:\Developement\Work\LearnJavaScript\Forkify\node_modules\readdirp\index.d.ts133181747571652828 0
 88H:\Developement\Work\LearnJavaScript\Forkify\node_modules\node-addon-api\tools\README.md133181745837678360 0
@@ -12,7 +12,7 @@
 85H:\Developement\Work\LearnJavaScript\Forkify\node_modules\source-map\lib\array-set.js133181745828180145 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\SR.js133181745846909923 0
 128H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\core\test\fixtures\config-extends-not-found\.parcelrc-multiple133181745961013306 0
-49H:\Developement\Work\LearnJavaScript\Forkify\dist133181748639198103 1
+49H:\Developement\Work\LearnJavaScript\Forkify\dist133181904767185216 1
 96H:\Developement\Work\LearnJavaScript\Forkify\node_modules\posthtml-parser\dist\chunk.T6SARJYH.js133181745831120575 0
 85H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@jridgewell\sourcemap-codec133181745832266180 1
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\NL.js133181745845602498 0
@@ -37,7 +37,7 @@
 109H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\source-map\parcel_sourcemap_node\src\lib.rs133181745976640070 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\KY.js133181745844921883 0
 83H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\utils\src\glob.js133181745948158056 0
-55H:\Developement\Work\LearnJavaScript\Forkify\index.html132886955210000000 0
+55H:\Developement\Work\LearnJavaScript\Forkify\index.html133181897225985421 0
 101H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\features\html5semantic.js133181745844363443 0
 136H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\aliased-file\package.json133181745846018040 0
 106H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\features\css3-cursors-newer.js133181745843197805 0
@@ -136,7 +136,7 @@
 97H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\features\dommatrix.js133181745843501240 0
 64H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@babel133181745821693541 1
 100H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\core\src\requests\ConfigRequest.js133181745966975979 0
-65H:\Developement\Work\LearnJavaScript\Forkify\src\js\controller.js132886955210000000 0
+65H:\Developement\Work\LearnJavaScript\Forkify\src\js\controller.js133181904760110449 0
 96H:\Developement\Work\LearnJavaScript\Forkify\node_modules\svgo\plugins\convertEllipseToCircle.js133181745837264172 0
 86H:\Developement\Work\LearnJavaScript\Forkify\node_modules\csso\lib\restructure\prepare133181745840555979 1
 64H:\Developement\Work\LearnJavaScript\Forkify\src\img\favicon.png132886955210000000 0
@@ -1387,7 +1387,7 @@
 90H:\Developement\Work\LearnJavaScript\Forkify\node_modules\source-map-js\lib\source-node.js133181747571762913 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\PE.js133181745845998015 0
 84H:\Developement\Work\LearnJavaScript\Forkify\node_modules\mdn-data\css\syntaxes.json133181745837838500 0
-72H:\Developement\Work\LearnJavaScript\Forkify\dist\index.f7626f62.css.map133181748638697645 0
+72H:\Developement\Work\LearnJavaScript\Forkify\dist\index.f7626f62.css.map133181904767175209 0
 81H:\Developement\Work\LearnJavaScript\Forkify\node_modules\csso\lib\clean\utils.js133181745840696103 0
 87H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@lmdb\lmdb-win32-x64\index.js133181745878196503 0
 83H:\Developement\Work\LearnJavaScript\Forkify\node_modules\source-map-js\lib\util.js133181747571772922 0
@@ -1909,7 +1909,7 @@
 70H:\Developement\Work\LearnJavaScript\Forkify\node_modules\lmdb\keys.js133181745891645455 0
 112H:\Developement\Work\LearnJavaScript\Forkify\node_modules\lmdb\node_modules\node-addon-api\napi-inl.deprecated.h133181745957906908 0
 91H:\Developement\Work\LearnJavaScript\Forkify\node_modules\css-tree\lib\syntax\pseudo\not.js133181745841536870 0
-69H:\Developement\Work\LearnJavaScript\Forkify\dist\Forkify.3464ddca.js133181748638757715 0
+69H:\Developement\Work\LearnJavaScript\Forkify\dist\Forkify.3464ddca.js133181892710786696 0
 71H:\Developement\Work\LearnJavaScript\Forkify\node_modules\lmdb\level.js133181745891655463 0
 76H:\Developement\Work\LearnJavaScript\Forkify\node_modules\lmdb\node-index.js133181745891665475 0
 99H:\Developement\Work\LearnJavaScript\Forkify\node_modules\electron-to-chromium\chromium-versions.js133181745825688296 0
@@ -2214,7 +2214,7 @@
 81H:\Developement\Work\LearnJavaScript\Forkify\node_modules\css-select\package.json133181745836484936 0
 78H:\Developement\Work\LearnJavaScript\Forkify\node_modules\htmlnano\lib\presets133181745840175631 1
 90H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@swc\helpers\lib\_ts_decorate.js133181745841376727 0
-67H:\Developement\Work\LearnJavaScript\Forkify\dist\index.62406edb.js133181748638687642 0
+67H:\Developement\Work\LearnJavaScript\Forkify\dist\index.62406edb.js133181892956368099 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\htmlnano\lib\presets\ampSafe.js133181745831795536 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\AE.js133181745836124613 0
 85H:\Developement\Work\LearnJavaScript\Forkify\node_modules\htmlnano\lib\presets\max.js133181745837334230 0
@@ -2418,7 +2418,7 @@
 105H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\features\custom-elementsv1.js133181745843247860 0
 79H:\Developement\Work\LearnJavaScript\Forkify\node_modules\domutils\lib\index.js133181745826815525 0
 82H:\Developement\Work\LearnJavaScript\Forkify\node_modules\domutils\lib\legacy.d.ts133181745837548244 0
-68H:\Developement\Work\LearnJavaScript\Forkify\dist\index.f7626f62.css133181748638627590 0
+68H:\Developement\Work\LearnJavaScript\Forkify\dist\index.f7626f62.css133181904767155188 0
 77H:\Developement\Work\LearnJavaScript\Forkify\node_modules\css-tree\lib\syntax133181745841376727 1
 86H:\Developement\Work\LearnJavaScript\Forkify\node_modules\domutils\lib\legacy.d.ts.map133181745836344806 0
 89H:\Developement\Work\LearnJavaScript\Forkify\node_modules\caniuse-lite\data\regions\PM.js133181745846108120 0
@@ -3463,6 +3463,7 @@
 82H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@swc\helpers\lib\_get.js133181745840696103 0
 83H:\Developement\Work\LearnJavaScript\Forkify\node_modules\acorn\dist\acorn.mjs.d.ts133181745836765183 0
 73H:\Developement\Work\LearnJavaScript\Forkify\node_modules\acorn\bin\acorn133181745825508137 0
+68H:\Developement\Work\LearnJavaScript\Forkify\dist\icons.dfd7a6db.svg133181904767155188 0
 87H:\Developement\Work\LearnJavaScript\Forkify\node_modules\abortcontroller-polyfill\dist133181745847975837 1
 93H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\runtime-js\lib\JSRuntime.js133181745888125597 0
 90H:\Developement\Work\LearnJavaScript\Forkify\node_modules\abortcontroller-polyfill\LICENSE133181745847795663 0
@@ -3781,7 +3782,7 @@
 90H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\transformer-json\LICENSE133181745871767165 0
 86H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\transformer-json\src133181745871787186 1
 105H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\transformer-json\lib\JSONTransformer.js133181745871777175 0
-60H:\Developement\Work\LearnJavaScript\Forkify\dist\index.html133181748638827761 0
+60H:\Developement\Work\LearnJavaScript\Forkify\dist\index.html133181904767145177 0
 98H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\transformer-js\native-browser.js133181745873599537 0
 85H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\config-default\test133181745955293606 1
 93H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\transformer-js\package.json133181745873619552 0
@@ -3982,7 +3983,7 @@
 112H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\optimizer-image\parcel-image.darwin-arm64.node133181745949501306 0
 110H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\optimizer-image\parcel-image.darwin-x64.node133181745973771156 0
 115H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\optimizer-image\parcel-image.linux-arm64-gnu.node133181746023843711 0
-71H:\Developement\Work\LearnJavaScript\Forkify\dist\index.62406edb.js.map133181748638717672 0
+71H:\Developement\Work\LearnJavaScript\Forkify\dist\index.62406edb.js.map133181892956388100 0
 116H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\optimizer-image\parcel-image.linux-arm64-musl.node133181746055633172 0
 113H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\optimizer-image\parcel-image.linux-x64-gnu.node133181746090763163 0
 100H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\core\src\serializerCore.browser.js133181745974824265 0
@@ -4056,7 +4057,7 @@
 81H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\diagnostic\test133181745967136123 1
 118H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\env-dep\package.json133181745845998015 0
 104H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\node-resolver-core\src\NodeResolver.js133181745845817852 0
-67H:\Developement\Work\LearnJavaScript\Forkify\dist\logo.726d37a8.png133181748638637594 0
+67H:\Developement\Work\LearnJavaScript\Forkify\dist\logo.726d37a8.png133181904767105146 0
 100H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\node-resolver-core\lib\builtins.js133181745842567229 0
 85H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\events\src\types.js133181745974453927 0
 98H:\Developement\Work\LearnJavaScript\Forkify\node_modules\@parcel\node-resolver-core\lib\_empty.js133181745842467147 0
@@ -4370,6 +4371,8 @@
 67H:\Developement\Work\LearnJavaScript\Forkify\node_modules\.bin\svgo133181746437961939 0
 69H:\Developement\Work\LearnJavaScript\Forkify\node_modules\.bin\terser133181746437971967 0
 73H:\Developement\Work\LearnJavaScript\Forkify\node_modules\.bin\terser.ps1133181746437961939 0
-70H:\Developement\Work\LearnJavaScript\Forkify\dist\favicon.8b2f57bf.png133181748638627590 0
-73H:\Developement\Work\LearnJavaScript\Forkify\dist\Forkify.3464ddca.js.map133181748638777728 0
-68H:\Developement\Work\LearnJavaScript\Forkify\dist\icons.21bad73c.svg133181748639198103 0
+70H:\Developement\Work\LearnJavaScript\Forkify\dist\favicon.8b2f57bf.png133181904767075125 0
+73H:\Developement\Work\LearnJavaScript\Forkify\dist\Forkify.3464ddca.js.map133181892710796708 0
+68H:\Developement\Work\LearnJavaScript\Forkify\dist\icons.21bad73c.svg133181904767105146 0
+67H:\Developement\Work\LearnJavaScript\Forkify\dist\index.e37f48ea.js133181904767155188 0
+71H:\Developement\Work\LearnJavaScript\Forkify\dist\index.e37f48ea.js.map133181904767175209 0
