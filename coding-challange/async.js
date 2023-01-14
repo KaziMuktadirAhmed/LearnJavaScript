@@ -32,7 +32,6 @@ const getCountryData = function (country) {
     //   console.log(this.responseText);
     // console.log(this);
     const [data] = JSON.parse(this.responseText);
-    console.dir(data);
 
     // Render country 1
     renderContry(data);
@@ -47,7 +46,6 @@ const getCountryData = function (country) {
 
     request2.addEventListener("load", function () {
       const data2 = JSON.parse(this.responseText);
-      console.dir(data2);
       renderContry(data2, "neighbour");
     });
   });
@@ -55,3 +53,6 @@ const getCountryData = function (country) {
 getCountryData("Bangladesh");
 // getCountryData("UAE");
 getCountryData("USA");
+
+const req = fetch("GET", `https://restcountries.com/v2/name/bangladesh`);
+console.log(req);
