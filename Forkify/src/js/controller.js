@@ -17,6 +17,7 @@ const timeout = function (s) {
 ///////////////////////////////////////
 
 const renderSpninner = function (parentElement) {
+  console.log('ola');
   const markup = `
   <div class="spinner">
     <svg>
