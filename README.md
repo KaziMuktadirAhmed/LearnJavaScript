@@ -16,4 +16,8 @@ Then start the live server with : `live-server` <br>
 
 ### Arrays and data structure ✅
 
-### Object oriented programming 🔃
+### Object oriented programming ✅
+
+### Asychronus javascript ✅
+
+### Forkify App 🔃
