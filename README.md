@@ -2,9 +2,8 @@
 
 ## Projects
 
-### Forkify App 🔃
-
-### Mapty ✅
+1️⃣ Forkify App 🔃
+2️⃣ Mapty ✅
 
 ### How to run
 
