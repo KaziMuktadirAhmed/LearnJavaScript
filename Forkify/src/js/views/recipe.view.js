@@ -1,61 +1,12 @@
+import View from './view';
+
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 
-class RecipeView {
-  #data;
-  #message = '';
-  #errorMessage = `We could not find that recipe. Please try another one!`;
-  #parentElement = document.querySelector('.recipe');
-
-  render(data) {
-    this.#data = data;
-    const markup = this.#generateMarkup();
-    this.#clearParent();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  renderSpninner() {
-    const markup = `
-    <div class="spinner">
-      <svg>
-        <use href="${icons}#icon-loader"></use>
-      </svg>
-    </div>
-    `;
-    this.#parentElement.innerHTML = '';
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  renderError(message = this.#errorMessage) {
-    const markup = `
-    <div class="error">
-      <div>
-        <svg>
-          <use href="${icons}#icon-alert-triangle"></use>
-        </svg>
-      </div>
-      <p>${message}</p>
-    </div>
-  `;
-    this.#clearParent();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  renderMessage(message = this.#message) {
-    const markup = `
-      <div class="recipe">
-        <div class="message">
-          <div>
-            <svg>
-              <use href="${icons}#icon-smile"></use>
-            </svg>
-          </div>
-        <p>${message}</p>
-      </div>
-    `;
-    this.#clearParent();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
+class RecipeView extends View {
+  _message = '';
+  _errorMessage = `We could not find that recipe. Please try another one!`;
+  _parentElement = document.querySelector('.recipe');
 
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(event =>
@@ -63,12 +14,8 @@ class RecipeView {
     );
   }
 
-  #clearParent() {
-    this.#parentElement.innerHTML = '';
-  }
-
-  #generateMarkup() {
-    const recipe = this.#data;
+  _generateMarkup() {
+    const recipe = this._data;
     return `
     <figure class="recipe__fig">
       <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
@@ -108,9 +55,6 @@ class RecipeView {
         </div>
       </div>
       <div class="recipe__user-generated">
-        <svg>
-          <use href="${icons}#icon-user"></use>
-        </svg>
       </div>
       <button class="btn--round">
         <svg class="">
@@ -121,7 +65,7 @@ class RecipeView {
     <div class="recipe__ingredients">
       <h2 class="heading--2">Recipe ingredients</h2>
       <ul class="recipe__ingredient-list">
-      ${recipe.ingredients.map(this.#generateMarkupForIngredient).join('')}
+      ${recipe.ingredients.map(this._generateMarkupForIngredient).join('')}
       </ul>
     </div>
     <div class="recipe__directions">
@@ -147,7 +91,7 @@ class RecipeView {
     `;
   }
 
-  #generateMarkupForIngredient(ing) {
+  _generateMarkupForIngredient(ing) {
     return `
         <li class="recipe__ingredient">
           <svg class="recipe__icon">
