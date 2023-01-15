@@ -18,7 +18,7 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
-const showRecipe = async function () {
+const controlRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
     // Loading recipe
@@ -30,11 +30,11 @@ const showRecipe = async function () {
     // Rendering recipe
     recipeView.render(model.state.recipe);
   } catch (error) {
-    alert(error);
+    console.log(error);
   }
 };
-showRecipe();
 
-['hashchange', 'load'].forEach(event =>
-  window.addEventListener(event, showRecipe)
-);
+const init = function () {
+  recipeView.addHandlerRender(controlRecipe);
+};
+init();
