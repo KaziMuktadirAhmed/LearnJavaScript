@@ -1,6 +1,4 @@
 import View from './view';
-import icons from 'url:../../img/icons.svg';
-import previewView from './preview.view';
 
 class AddRecipeView extends View {
   _message = 'Recipe was successfully uploaded.';
