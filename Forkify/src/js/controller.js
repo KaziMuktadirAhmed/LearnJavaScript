@@ -12,6 +12,7 @@ import { async } from 'regenerator-runtime';
 import { MODAL_CLOSE_SEC } from './config';
 
 // https://forkify-api.herokuapp.com/v2
+// Feature complete
 
 ///////////////////////////////////////
 

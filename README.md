@@ -2,7 +2,7 @@
 
 ## Projects
 
-1️⃣ Forkify App 🔃<br>
+1️⃣ Forkify App ✅<br>
 2️⃣ Mapty ✅
 
 ### How to run
@@ -28,4 +28,4 @@ Start parcel dev server: `npm start`
 
 ### Asychronus javascript ✅
 
-### Forkify App 🔃
+### Forkify App ✅✅
