@@ -2,7 +2,7 @@ import View from './view';
 import icons from 'url:../../img/icons.svg';
 
 import 'regenerator-runtime/runtime';
-import { Fraction } from 'fractional';
+const { Fraction } = require('fractional');
 
 class RecipeView extends View {
   _message = '';
