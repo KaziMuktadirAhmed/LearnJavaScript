@@ -9,6 +9,7 @@ import addRecipeView from './views/add.recipe.view';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
+import { MODAL_CLOSE_SEC } from './config';
 
 // https://forkify-api.herokuapp.com/v2
 
@@ -26,8 +27,7 @@ const controlRecipe = async function () {
     await model.loadRecipe(id);
     recipeView.render(model.state.recipe);
   } catch (error) {
-    console.log(error);
-    console.log(`${error} 🔥🔥🔥🔥`);
+    console.error(error, `🔥🔥🔥🔥`);
     recipeView.renderError();
   }
 };
@@ -71,8 +71,20 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddRecipe = function (newRecipe) {
-  console.log(newRecipe);
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    addRecipeView.renderSpninner();
+    await model.uploadRecipe(newRecipe);
+
+    recipeView.render(model.state.recipe);
+    addRecipeView.renderMessage();
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, 1000 * MODAL_CLOSE_SEC);
+  } catch (error) {
+    console.error(error, `🔥🔥🔥🔥🔥`);
+    addRecipeView.renderError(error.message);
+  }
 };
 
 const init = function () {
