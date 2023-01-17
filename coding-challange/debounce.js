@@ -7,19 +7,22 @@ btnWihtoutDebounce.addEventListener("click", function (event) {
 });
 
 // with debounce
-function debounce(handler, timeout) {
+function debounce(handler, time_before_call, ...params) {
   let timeoutInstance;
   return function () {
     if (timeoutInstance) {
       clearTimeout(timeoutInstance);
     }
-    timeoutInstance = setTimeout(handler, timeout);
+    timeoutInstance = setTimeout(() => handler(...params), time_before_call);
   };
 }
 
 btnWithDebounce.addEventListener(
   "click",
-  debounce(function (event) {
-    console.log("clicked with debounce");
-  }, 500)
+  debounce(demo, 250, 45, "hello", 78.9, { ok: "okla" })
 );
+
+function demo() {
+  console.log("clicked with debounce");
+  console.log(`list of params that were passed here: `);
+}
