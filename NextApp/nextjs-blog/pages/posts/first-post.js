@@ -12,9 +12,9 @@ export default function FirstPost() {
 
       <h1>First Post</h1>
       <pre>This is good</pre>
-      <p>
+      <h2>
         Go back to <Link href="/">title page</Link>
-      </p>
+      </h2>
     </Layout>
   );
 }
