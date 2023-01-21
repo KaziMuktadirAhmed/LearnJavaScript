@@ -3,3 +3,5 @@ dist
 .cache
 .parcel-cache
 .DS_Store
+.next
+out
