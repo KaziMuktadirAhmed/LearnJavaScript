@@ -2,13 +2,18 @@
   "name": "learnrxjs",
   "version": "1.0.0",
   "description": "",
-  "main": "rxjs.js",
+  "default": "index.html",
+  "type": "module",
   "scripts": {
+    "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3"
   }
 }
