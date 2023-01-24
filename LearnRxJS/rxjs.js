@@ -32,7 +32,6 @@ Rx.concat(source1$, source2$).subscribe((val) => console.log(val));
 
 let button = document.getElementById("readersButton");
 Rx.fromEvent(button, "click").subscribe((event) => {
-  console.log(event);
   let readersDiv = document.getElementById("readers");
   for (let reader of allReaders) {
     readersDiv.innerHTML += reader.name + `<br>`;
@@ -41,12 +40,23 @@ Rx.fromEvent(button, "click").subscribe((event) => {
 
 let buttonAjax = document.getElementById("readersAjaxButton");
 Rx.fromEvent(buttonAjax, "click").subscribe((event) => {
-  console.log(event);
   RxAjax.ajax("https://www.boredapi.com/api/activity").subscribe((resAjax) => {
-    console.log(resAjax);
     let { response } = resAjax;
     for (const key in response) {
       print(`${key}: ${response[key]}`);
     }
   });
+});
+
+let buttonTimer = document.getElementById("timerButton");
+let buttonStopTimer = document.getElementById("stopTimer");
+let timerSubscription;
+let timer$ = Rx.interval(1000);
+Rx.fromEvent(buttonTimer, "click").subscribe((event) => {
+  timerSubscription = timer$.subscribe((value) => console.log(`${value}`));
+});
+
+Rx.fromEvent(buttonStopTimer, "click").subscribe((event) => {
+  timerSubscription.unsubscribe();
+  console.log("timer stopped");
 });
