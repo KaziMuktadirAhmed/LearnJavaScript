@@ -60,3 +60,19 @@ Rx.fromEvent(buttonStopTimer, "click").subscribe((event) => {
   timerSubscription.unsubscribe();
   console.log("timer stopped");
 });
+
+let obs$ = new Rx.Observable((subscriber) => {
+  subscriber.next(Math.random());
+});
+let subject$ = new Rx.Subject();
+
+print(`Hot`);
+subject$.subscribe((val) => print(`Observer 1: ${val}`));
+subject$.subscribe((val) => print(`Observer 2: ${val}`));
+
+obs$.subscribe(subject$);
+
+print(`cold`);
+obs$.subscribe((val) => print(`Observer 1: ${val}`));
+obs$.subscribe((val) => print(`Observer 2: ${val}`));
+// subject$.next("hello");
