@@ -76,3 +76,16 @@ print(`cold`);
 obs$.subscribe((val) => print(`Observer 1: ${val}`));
 obs$.subscribe((val) => print(`Observer 2: ${val}`));
 // subject$.next("hello");
+
+// RxJS scheduler
+console.log("Start script");
+
+let queue$ = Rx.of("queue scheduler (sync)", Rx.queueScheduler);
+let asap$ = Rx.of("Asap scheduler (micro task)", Rx.asapScheduler);
+let async$ = Rx.of("Async scheduler (async task)", Rx.asyncScheduler);
+
+Rx.merge(async$, asap$, queue$).subscribe((val) => {
+  console.log(val);
+});
+
+console.log("End Script");
