@@ -1,4 +1,6 @@
 import * as Rx from "rxjs";
+import * as RxAjax from "rxjs/ajax";
+import { allReaders, allBooks } from "./data";
 
 function print(value) {
   let element = document.createElement("p");
@@ -6,19 +8,45 @@ function print(value) {
   document.body.appendChild(element);
 }
 
-let nums = [2, 2, 4, 6, 8];
-let observableNums$ = Rx.from(nums);
-let evenNums$ = Rx.Observable.create((subscriber) => {
-  for (let currentNum of nums) {
-    if (currentNum % 2 === 0) subscriber.next(currentNum);
-    else subscriber.error(`Value is not even`);
+let allBooksObservable$ = new Rx.Observable((subscriber) => {
+  if (document.title !== "rxjs practice")
+    subscriber.error("Incorrect page title");
+
+  for (let book of allBooks) {
+    subscriber.next(book);
   }
-  subscriber.complete("Done");
+
+  setTimeout(() => subscriber.complete(), 2000);
 });
-let observer = {
-  next: (value) => print(`value from observable: ${value}`),
+
+allBooksObservable$.subscribe({
+  next: (book) => print(`Title: ${book.title}`),
   error: (error) => console.error(error),
-  complete: () => print(`All Done`),
-};
-observableNums$.subscribe(observer);
-evenNums$.subscribe(observer);
+  complete: () => print("All done"),
+});
+
+let source1$ = Rx.of("lol", "xd", 123, ["la", 09], 2.34);
+let source2$ = Rx.from(allReaders);
+Rx.concat(source1$, source2$).subscribe((val) => console.log(val));
+// source1$.subscribe((val) => console.log(val));
+
+let button = document.getElementById("readersButton");
+Rx.fromEvent(button, "click").subscribe((event) => {
+  console.log(event);
+  let readersDiv = document.getElementById("readers");
+  for (let reader of allReaders) {
+    readersDiv.innerHTML += reader.name + `<br>`;
+  }
+});
+
+let buttonAjax = document.getElementById("readersAjaxButton");
+Rx.fromEvent(buttonAjax, "click").subscribe((event) => {
+  console.log(event);
+  RxAjax.ajax("https://www.boredapi.com/api/activity").subscribe((resAjax) => {
+    console.log(resAjax);
+    let { response } = resAjax;
+    for (const key in response) {
+      print(`${key}: ${response[key]}`);
+    }
+  });
+});
