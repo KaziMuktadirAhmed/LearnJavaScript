@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+}
+
+.page-container {
+  height: 100%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  background-color: lightblue;
+  flex: 1;
+}
+
+.page-content {
+  background-color: white;
+  display: flex;
+  flex: 5 2 auto;
+}
+
+.content-navigation {
+  background-color: blueviolet;
+  flex: 1;
+}
+
+.content-article {
+  background-color: olive;
+  flex: 2 2 12em;
+}
+
+.content-side-bar {
+  background-color: red;
+  flex: 1;
+}
+
+.page-footer {
+  background-color: gray;
+  flex: 1;
+}
+
+@media screen and (max-width: 500px) {
+  .page-content {
+    flex-direction: column;
+  }
+}

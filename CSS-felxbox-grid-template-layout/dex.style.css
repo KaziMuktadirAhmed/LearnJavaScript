@@ -1,43 +1,49 @@
+* {
+  margin: 0;
+}
+
 .page-container {
   height: 100%;
   border: 2px solid black;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid: 1fr 8fr 1fr / repeat(4, auto);
+  grid-template-areas:
+    "header header header header"
+    "navigation article article sidebar"
+    "footer footer footer footer";
 }
 
 .page-header {
   background-color: lightblue;
-  flex: 1;
+  grid-area: header;
 }
 
 .page-content {
   background-color: white;
-  display: flex;
-  flex: 5 2 auto;
+  display: contents;
 }
 
 .content-navigation {
   background-color: blueviolet;
-  flex: 1;
+  grid-area: navigation;
 }
 
 .content-article {
   background-color: olive;
-  flex: 2 2 12em;
+  grid-area: article;
 }
 
 .content-side-bar {
   background-color: red;
-  flex: 1;
+  grid-area: sidebar;
 }
 
 .page-footer {
   background-color: gray;
-  flex: 1;
+  grid-area: footer;
 }
 
 @media screen and (max-width: 500px) {
   .page-content {
-    flex-direction: column;
   }
 }
