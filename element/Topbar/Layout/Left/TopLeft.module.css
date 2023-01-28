@@ -1,0 +1,5 @@
+.content {
+  padding-left: 1em;
+  justify-self: start;
+  border-right: 2px solid gray;
+}
